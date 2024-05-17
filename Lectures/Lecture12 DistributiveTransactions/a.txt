@@ -1,0 +1,8 @@
+Lecture 12
+
+Lecture 12
+
+6.033 Book. Read just these parts of Chapter 9: 9.1.5, 9.1.6, 9.5.2, 9.5.3, 9.6.3. The last two sections (on two-phase locking and distributed two-phase commit) are the most important. The Question: describe a situation where Two-Phase Locking yields higher performance than Simple Locking.
+
+
+Answer: consider the following situation, where x and y are data and there are two threads running in paralle: A that calls a(y), b(x) and C that calls c(x). If a simple lock is used, then we need to wait for A to finish before C can start or C to finish before A can start. That is, we have serial operations a(y), b(x), c(x) or c(x), a(y), b(x). If a two phase lock is used, then we can also have [a(y), c(x)], b(x) where a(y) and c(x) run in parallel. This could increase performance. 

@@ -1,0 +1,25 @@
+Lecture 11
+
+One thing to get out of this paper is a description of how to build a consistent primary/backup replicated system including reconfiguration, leases, etc. Another thing to learn about is the kind of systems state-of-the-art formal verification can prove correct and the techniques that are involved.
+
+Question: Consider a 3-server GroveKV system. Suppose key "x" originally had value "3", and a client calls Put("x", "10"). At some point, servers A and B think key "x" has value "10", while server C thinks "x" has value "3", because C has not yet received the most recent operations from the primary. How does GroveKV handle the problematic situation in which a client calls Get("x") and reads "10" from A or B, then calls Get("x") again and reads "3" from C, which violates linearizability by going "backwards"?
+
+
+
+Answer: Grove handles liearizability problem by using leases. Specifically, every replica runs
+a background thread that contacts the configuration service
+to obtain or extend a lease that promises the configuration
+service will not change the current epoch number (and thus
+not reconfigure) until lease expiration (e.g., 1 second from the
+time the lease is issued). All servers can serve read requests
+because this lease is a promise about the epoch number, rather
+than anything specific to a particular server’s state. When a replica server receives a read-only operation,
+and its lease is still valid, it computes the response from its
+local state. The replica ’s local state includes all committed
+operations since committed operations must be acknowledged
+by all servers. However, the state may also include ongoing
+write operations that have not yet been committed. To ensure
+that the client’s observed read does not roll back due to a crash
+or reconfiguration, the replica waits for all the previous writes
+that the read depends on to be committed before sending the
+result to the client.

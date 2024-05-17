@@ -1,0 +1,6 @@
+Lecture 5
+
+Russ Cox is one of the leads on the Go project. What do you like best about Go? Why? Would you want to change anything in the language? If so, what and why?
+
+
+Answer: The part I like the most about Go is that it is very easy to implement concurrency in this programming language; we can start Go routines concurrently by just going "Go ... ". So far I don't really have anything bad to say about the Go programming language, maybe one disadvantage is that this is still a pretty young language and the community is not that big compared to that of Python or C++, so some packages, especially the domain-specific ones, may not have been developed in Go yet. 

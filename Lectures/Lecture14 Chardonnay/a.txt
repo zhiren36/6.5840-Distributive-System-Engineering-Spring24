@@ -1,0 +1,7 @@
+Lecture 14
+
+At the end of Section 6.2, the Chardonnay paper says that a snapshot read transaction can be made linearizable by waiting for the epoch to advance by one. By "linearizable" the paper means that the transaction observes the results of all transactions that completed before it started. Why does waiting make the transaction linearizable?
+
+
+
+Answer: linearizbility is guaranteed because of the Epoch ordering property. If we wait for the epoch to advance by one, then it is guaranteed that the transaction at later epoch will happen after the transaction at earlier epoch. 

@@ -1,0 +1,3 @@
+Lecture 10
+
+Question: When I was debugging, I would find values of variables changed unexpectedly and I was not sure what caused the problem (assume the locks were placed in the right places so there was no two threads concurrently changing values). In general what are the common causes for this type of problems and what would be good practices for debugging them? 

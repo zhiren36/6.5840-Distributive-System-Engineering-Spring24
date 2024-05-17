@@ -1,0 +1,9 @@
+Lecture 7
+
+
+Question: Suppose we have the scenario shown in the Raft paper's Figure 7: a cluster of seven servers, with the log contents shown. The first server crashes (the one at the top of the figure), and cannot be contacted. A leader election ensues. For each of the servers marked (a), (d), and (f), could that server be elected? If yes, which servers would vote for it? If no, what specific Raft mechanism(s) would prevent it from being elected?
+
+
+
+
+Answer: I think only (a) and (d) can be selected as leader because their terms are more most up-tp-date than most other servers. When (f) tries to elect itself as leader and sends out requestVote RPCs, it will get replies with higher term numbers, in which case it will convert to follower mode. 

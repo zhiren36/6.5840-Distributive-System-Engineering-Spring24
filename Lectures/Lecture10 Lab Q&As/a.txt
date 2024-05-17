@@ -1,0 +1,6 @@
+Lecture 10
+
+The lecture today is a Q&A session about Lab 3A/3B. Submit a question about the lab: for example, something you wondered about while doing the lab, something you didn't understand, a memorable bug, or just anything.
+
+
+A. See q.txt for the question. 
